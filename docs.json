@@ -67,7 +67,21 @@
     ]
   },
   "seo": {
-    "indexing": "navigable"
+    "indexing": "navigable",
+    "organization": {
+      "id": "https://www.dazie.io/#organization",
+      "name": "dazie",
+      "url": "https://www.dazie.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/niklas-springer-716254158/",
+        "https://x.com/niklaspringer",
+        "https://github.com/nikspr"
+      ]
+    },
+    "metatags": {
+      "og:type": "article",
+      "article:published_time": "2026-10-08T00:00:00Z"
+    }
   },
   "footer": {
     "socials": {
