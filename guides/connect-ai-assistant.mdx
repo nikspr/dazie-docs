@@ -1,0 +1,44 @@
+---
+title: "Connect your AI assistant"
+description: "Connect Claude or any MCP client to your dazie journal, and let other agents ask dazie about it."
+---
+
+You can connect Claude, or any assistant that supports remote MCP servers, to your dazie account. Your assistant can then read your journal and help you keep it, without copying anything over by hand.
+
+## Connect your assistant
+
+1. In your assistant, add a custom connector (in Claude: **Settings → Connectors**) and enter `https://api.dazie.io/mcp` as the server URL.
+2. Your assistant opens app.dazie.io. Sign in with your dazie email and password.
+3. dazie shows which assistant is asking and what it can do. Choose **Allow** to connect it, or **Deny** to stop.
+4. Ask your assistant things like "what did I write about this week?" or "add a to-do to call mom".
+
+If the first connection times out, try again. dazie's server can take up to a minute to wake up.
+
+## What your assistant can do
+
+- Read your journal entries, the insights dazie saved from them, and call transcripts.
+- Read your to-dos, your companion's memories and your call schedule.
+- Write journal entries, add and update to-dos, and add memories.
+
+It can't delete anything, make calls or change your account, and it only ever sees your own data.
+
+## Tools
+
+| Tool | What it does |
+|---|---|
+| `list_journal_entries` | Your entries, newest first, with title, date, mood, tags and summary |
+| `search_journal` | Entries that mention a word or phrase |
+| `get_journal_entry` | One entry in full, with its insights, and the transcript if asked |
+| `create_journal_entry` | Adds a written entry |
+| `list_todos` | Your to-dos, optionally by status |
+| `add_todo` | Adds a to-do, with an optional due date |
+| `update_todo` | Marks a to-do done or dropped, or changes its text or date |
+| `list_memories` | What your companion remembers about you |
+| `add_memory` | Tells your companion something to remember |
+| `get_call_schedule` | When dazie is set to call you |
+
+## For other agents
+
+Agents that speak the A2A protocol can ask dazie about a user's journal after the same sign-in. dazie answers from that user's entries, to-dos and memories and changes nothing. The agent card is at `https://www.dazie.io/.well-known/agent-card.json`.
+
+Developers can find the sign-in details in [auth.md](https://www.dazie.io/auth.md): dazie uses OAuth 2.1 with PKCE and dynamic client registration, and the endpoints are discoverable from `https://api.dazie.io/.well-known/oauth-protected-resource`.

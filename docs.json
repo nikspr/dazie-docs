@@ -2,30 +2,76 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "dazie docs",
-  "colors": { "primary": "#4059ff", "light": "#7a8bff", "dark": "#2f45d9" },
+  "colors": {
+    "primary": "#4059ff",
+    "light": "#7a8bff",
+    "dark": "#2f45d9"
+  },
   "favicon": "/favicon.png",
-  "logo": { "light": "/logo/dazie.png", "dark": "/logo/dazie.png", "href": "https://www.dazie.io" },
+  "logo": {
+    "light": "/logo/dazie.png",
+    "dark": "/logo/dazie.png",
+    "href": "https://www.dazie.io"
+  },
   "navbar": {
-    "links": [{ "label": "Privacy", "href": "https://www.dazie.io/privacy.html" }],
-    "primary": { "type": "button", "label": "Start journaling", "href": "https://www.dazie.io" }
+    "links": [
+      {
+        "label": "Privacy",
+        "href": "https://www.dazie.io/privacy.html"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Start journaling",
+      "href": "https://www.dazie.io"
+    }
   },
   "navigation": {
     "groups": [
-      { "group": "Get started", "pages": ["index", "quickstart", "how-dazie-works"] },
-      { "group": "Guides", "pages": [
-        "guides/voice-journaling",
-        "guides/journaling-prompts",
-        "guides/your-companion",
-        "guides/insights-and-patterns",
-        "guides/memory",
-        "guides/follow-ups",
-        "guides/scheduled-calls",
-        "guides/building-a-habit"
-      ] },
-      { "group": "Account", "pages": ["account/data-and-privacy", "account/export-and-delete"] },
-      { "group": "Help", "pages": ["faq", "troubleshooting"] }
+      {
+        "group": "Get started",
+        "pages": [
+          "index",
+          "quickstart",
+          "how-dazie-works"
+        ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "guides/voice-journaling",
+          "guides/journaling-prompts",
+          "guides/your-companion",
+          "guides/insights-and-patterns",
+          "guides/memory",
+          "guides/follow-ups",
+          "guides/scheduled-calls",
+          "guides/building-a-habit",
+          "guides/connect-ai-assistant"
+        ]
+      },
+      {
+        "group": "Account",
+        "pages": [
+          "account/data-and-privacy",
+          "account/export-and-delete"
+        ]
+      },
+      {
+        "group": "Help",
+        "pages": [
+          "faq",
+          "troubleshooting"
+        ]
+      }
     ]
   },
-  "seo": { "indexing": "navigable" },
-  "footer": { "socials": { "website": "https://www.dazie.io" } }
+  "seo": {
+    "indexing": "navigable"
+  },
+  "footer": {
+    "socials": {
+      "website": "https://www.dazie.io"
+    }
+  }
 }
