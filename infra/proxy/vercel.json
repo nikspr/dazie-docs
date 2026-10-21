@@ -60,6 +60,10 @@
   ],
   "rewrites": [
     {
+      "source": "/",
+      "destination": "https://dazie.mintlify.site/"
+    },
+    {
       "source": "/api/request",
       "destination": "https://dazie.mintlify.site/_mintlify/api/request"
     },
