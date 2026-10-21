@@ -79,7 +79,11 @@
       ]
     },
     "metatags": {
-      "article:published_time": "2026-10-08T00:00:00Z"
+      "article:published_time": "2026-10-08T00:00:00Z",
+      "canonical": "https://docs.dazie.io",
+      "og:image": "https://www.dazie.io/assets/logo/og-image.png",
+      "og:type": "website",
+      "twitter:card": "summary_large_image"
     }
   },
   "footer": {
