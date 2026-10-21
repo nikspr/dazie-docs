@@ -1,0 +1,72 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "public",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://docs.dazie.io/llms.txt>; rel=\"describedby\"; type=\"text/markdown\", <https://www.dazie.io/.well-known/api-catalog>; rel=\"api-catalog\", <https://docs.dazie.io/.well-known/mcp/server-card.json>; rel=\"mcp-server-card\""
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://docs.dazie.io/index.md>; rel=\"alternate\"; type=\"text/markdown\", <https://docs.dazie.io/llms.txt>; rel=\"describedby\"; type=\"text/markdown\", <https://www.dazie.io/.well-known/api-catalog>; rel=\"api-catalog\""
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/.well-known/api-catalog",
+      "destination": "https://www.dazie.io/.well-known/api-catalog",
+      "permanent": false
+    },
+    {
+      "source": "/.well-known/oauth-authorization-server",
+      "destination": "https://www.dazie.io/.well-known/oauth-authorization-server",
+      "permanent": false
+    },
+    {
+      "source": "/.well-known/oauth-protected-resource",
+      "destination": "https://api.dazie.io/.well-known/oauth-protected-resource",
+      "permanent": false
+    },
+    {
+      "source": "/.well-known/agent-card.json",
+      "destination": "https://api.dazie.io/.well-known/agent-card.json",
+      "permanent": false
+    },
+    {
+      "source": "/.well-known/http-message-signatures-directory",
+      "destination": "https://api.dazie.io/.well-known/http-message-signatures-directory",
+      "permanent": false
+    },
+    {
+      "source": "/.well-known/ard.json",
+      "destination": "https://www.dazie.io/.well-known/ai-catalog.json",
+      "permanent": false
+    },
+    {
+      "source": "/.well-known/ai-catalog.json",
+      "destination": "https://www.dazie.io/.well-known/ai-catalog.json",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/request",
+      "destination": "https://dazie.mintlify.site/_mintlify/api/request"
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://dazie.mintlify.site/:path*"
+    }
+  ],
+  "buildCommand": "mkdir -p public"
+}
