@@ -1,0 +1,44 @@
+---
+"og:type": "article"
+"article:published_time": "2026-10-29T00:00:00Z"
+title: "API overview"
+description: "The dazie REST API: read and write one signed-in user's journal, to-dos and companion memories."
+---
+
+The dazie API lives at `https://api.dazie.io/v1`. Every request acts as one dazie user and sees only that user's data. The machine-readable spec is at [api.dazie.io/v1/openapi.json](https://api.dazie.io/v1/openapi.json).
+
+The same operations are available three other ways: the [CLI](/cli), the [TypeScript SDK](/sdk) and the [MCP server](/guides/connect-ai-assistant).
+
+## Authentication
+
+Send an OAuth 2.1 access token as a bearer token:
+
+```sh
+curl https://api.dazie.io/v1/me -H "Authorization: Bearer $DAZIE_TOKEN"
+```
+
+For your own account, `npx dazie login` gets a token and `cat ~/.config/dazie/credentials.json` shows it. For an app that acts for other people, see [Authentication](/auth): dazie uses authorization code + PKCE with dynamic client registration, discoverable from `https://api.dazie.io/.well-known/oauth-protected-resource`.
+
+A missing or expired token returns `401` with a `WWW-Authenticate` header pointing at that metadata.
+
+## Errors
+
+Errors always have this shape:
+
+```json
+{ "error": { "code": "not_found", "message": "Journal entry not found" } }
+```
+
+| Status | Code | When |
+|---|---|---|
+| 400 | `invalid_request` | An input failed validation; the message names the field |
+| 401 | | Missing, invalid or expired token |
+| 404 | `not_found` | The record doesn't exist or isn't the caller's |
+| 409 | `onboarding_required` | The user hasn't finished onboarding at app.dazie.io |
+| 500 | `internal_error` | Something failed on dazie's side |
+
+## Limits
+
+- The API can't delete data, place calls, or change the account or call schedule.
+- Lists return at most 100 items per request.
+- The server can take up to a minute to wake up after a quiet period. Retry once on a timeout.

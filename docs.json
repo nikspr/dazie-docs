@@ -51,6 +51,19 @@
         ]
       },
       {
+        "group": "Developers",
+        "pages": [
+          "cli",
+          "sdk",
+          "auth",
+          "api-reference/introduction"
+        ]
+      },
+      {
+        "group": "API reference",
+        "openapi": "api-reference/openapi.json"
+      },
+      {
         "group": "Account",
         "pages": [
           "account/data-and-privacy",

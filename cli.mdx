@@ -1,0 +1,86 @@
+---
+"og:type": "article"
+"article:published_time": "2026-10-29T00:00:00Z"
+title: "dazie CLI"
+description: "Read and write your dazie journal, to-dos and memories from the terminal, and connect dazie to Claude Code, Codex, Cursor or VS Code."
+---
+
+The `dazie` CLI works on your own account from any terminal. Agents use it the same way you do, and every command takes `--json`.
+
+## Install and sign in
+
+You need a dazie account with onboarding finished. Create one at [app.dazie.io](https://app.dazie.io).
+
+```sh
+npx dazie login
+```
+
+Your browser opens app.dazie.io. Sign in, check what the CLI is asking for, and choose **Allow**. The CLI saves a token to `~/.config/dazie/credentials.json` (readable only by you) and renews it on its own.
+
+To install it globally instead of using `npx`:
+
+```sh
+npm install -g dazie
+```
+
+Check the account you're signed in as:
+
+```sh
+dazie whoami
+```
+
+## Journal
+
+```sh
+dazie journal list                          # newest first
+dazie journal list --since 2026-10-01 --limit 50
+dazie journal search "my sister"
+dazie journal get 42                        # the full entry
+dazie journal get 42 --transcript           # with the call transcript
+dazie journal write --title "Sunday walk" --content "Long walk, felt lighter after." --mood calm --tag walk
+echo "Long walk, felt lighter after." | dazie journal write --title "Sunday walk"
+```
+
+## To-dos
+
+```sh
+dazie todos list --status open
+dazie todos add "Call Sam back" --due 2026-11-02
+dazie todos done 7
+dazie todos drop 7
+dazie todos reopen 7
+```
+
+## Memories and calls
+
+```sh
+dazie memories list --type goals
+dazie memories add relationships "Sam is my sister"
+dazie schedule
+```
+
+Memory types are `emotional_state`, `goals`, `relationships`, `insights`, `patterns` and `preferences`.
+
+## Connect an AI client
+
+`dazie mcp add` registers dazie's MCP server, `https://api.dazie.io/mcp`, with your client. The client asks you to sign in the first time it connects.
+
+| Client | Command |
+|---|---|
+| Claude Code | `dazie mcp add claude-code` |
+| Codex | `dazie mcp add codex` |
+| Cursor | `dazie mcp add cursor` |
+| VS Code | `dazie mcp add vscode` |
+| Windsurf | `dazie mcp add windsurf` |
+| Claude (desktop and web) | `dazie mcp add claude-desktop` prints the connector steps |
+
+`dazie mcp add print` prints the JSON config for any other client. See [Connect your AI assistant](/guides/connect-ai-assistant) for what the tools can do.
+
+## For agents and scripts
+
+- Output is JSON when stdout isn't a terminal, or with `--json`.
+- Errors go to stderr as `{"error":{"code":"…","message":"…"}}`. Exit code `2` means not signed in, `1` any other error.
+- Set `DAZIE_TOKEN` to use an access token instead of the saved login, for example in CI.
+- `dazie instructions` prints a guide written for agents. The same guide installs as a skill: `npx skills add nikspr/dazie-app`.
+
+The CLI can't delete data, place calls, or change your account or call schedule. Do those at [app.dazie.io](https://app.dazie.io).

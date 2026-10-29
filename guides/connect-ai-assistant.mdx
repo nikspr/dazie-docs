@@ -14,6 +14,16 @@ You can connect Claude, or any assistant that supports remote MCP servers, to yo
 3. dazie shows which assistant is asking and what it can do. Choose **Allow** to connect it, or **Deny** to stop.
 4. Ask your assistant things like "what did I write about this week?" or "add a to-do to call mom".
 
+### From the terminal
+
+If you use Claude Code, Codex, Cursor or VS Code, one command registers dazie:
+
+```sh
+npx dazie mcp add claude-code
+```
+
+Swap in `codex`, `cursor`, `vscode` or `windsurf`. Your client asks you to sign in the first time it connects. See the [CLI](/cli) for the full list.
+
 If the first connection times out, try again. dazie's server can take up to a minute to wake up.
 
 ## What your assistant can do
@@ -43,4 +53,4 @@ It can't delete anything, make calls or change your account, and it only ever se
 
 Agents that speak the A2A protocol can ask dazie about a user's journal after the same sign-in. dazie answers from that user's entries, to-dos and memories and changes nothing. The agent card is at `https://www.dazie.io/.well-known/agent-card.json`.
 
-Developers can find the sign-in details in [auth.md](https://www.dazie.io/auth.md): dazie uses OAuth 2.1 with PKCE and dynamic client registration, and the endpoints are discoverable from `https://api.dazie.io/.well-known/oauth-protected-resource`.
+Developers can use the same data through the [API](/api-reference/introduction), [CLI](/cli) or [TypeScript SDK](/sdk). The sign-in details are in [Authentication](/auth): dazie uses OAuth 2.1 with PKCE and dynamic client registration, and the endpoints are discoverable from `https://api.dazie.io/.well-known/oauth-protected-resource`.
