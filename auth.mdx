@@ -11,15 +11,13 @@ No registration is needed. The pages, their Markdown twins and the docs MCP serv
 
 ## Acting for a user
 
-Everything that touches a user's journal (the [API](/api-reference/introduction), the [CLI](/cli), the [SDK](/sdk) and the MCP server at `https://api.dazie.io/mcp`) needs that user's OAuth 2.1 access token. The user approves each client on a consent screen at app.dazie.io and can deny it there.
+Everything that touches a user's journal (the [API](/api-reference/introduction) and the MCP server at `https://api.dazie.io/mcp`) needs that user's OAuth 2.1 access token. The user approves each client on a consent screen at app.dazie.io and can deny it there.
 
-The quickest way to get a token for your own account is `npx dazie login`.
-
-To run the flow yourself:
+To get a token:
 
 1. Read the protected resource metadata at `https://api.dazie.io/.well-known/oauth-protected-resource`. Its `authorization_servers` entry is the issuer.
 2. Read the issuer's authorization server metadata (RFC 8414) for the authorization, token and registration endpoints.
-3. Register a public client with dynamic client registration (RFC 7591): `token_endpoint_auth_method: "none"`, grant types `authorization_code` and `refresh_token`, and your redirect URI. Native apps and CLIs can use a loopback URI such as `http://127.0.0.1:<port>/callback`.
+3. Register a public client with dynamic client registration (RFC 7591): `token_endpoint_auth_method: "none"`, grant types `authorization_code` and `refresh_token`, and your redirect URI. Native apps can use a loopback URI such as `http://127.0.0.1:<port>/callback`.
 4. Send the user to the authorization endpoint with a PKCE `S256` code challenge and a `state`.
 5. Exchange the code at the token endpoint with the code verifier. Use the refresh token to renew access tokens.
 
