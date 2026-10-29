@@ -51,6 +51,17 @@
         ]
       },
       {
+        "group": "Developers",
+        "pages": [
+          "auth",
+          "api-reference/introduction"
+        ]
+      },
+      {
+        "group": "API reference",
+        "openapi": "api-reference/openapi.json"
+      },
+      {
         "group": "Account",
         "pages": [
           "account/data-and-privacy",
